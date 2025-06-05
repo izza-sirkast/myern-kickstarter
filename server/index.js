@@ -1,11 +1,16 @@
 const express = require('express');
 const dotenv = require('dotenv');
 dotenv.config();
+const cors = require('cors');
 
 
 // ============================= middlewares ===============================
 const app = express();
 app.use(express.json());
+app.use(cors({
+    origin: process.env.CLIENT_URL || 'http://localhost:5173',
+    credentials: true
+}))
 
 
 // ============================= routers ===============================
